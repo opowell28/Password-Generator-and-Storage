@@ -29,7 +29,21 @@ int main() {
     userInput = inputToUpper(userInput);
 
     if (userInput == "GENERATE") {
-        //ask for password length and generate here
+        int passLength = 0;
+        std::cout << "How long do you want your password to be? " << std::endl;
+        std::cin >> passLength;
+
+        std::string chars(
+                "abcdefghijklmnopqrstuvwxyz"
+                "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                "!@#$%^&*"
+                "`-_,./'|[]{}");
+        boost::random::random_device rng;
+        boost::random::uniform_int_distribution<> index_dist(0, chars.size() - 1);
+        for (int i = 0; i < passLength; ++i) {
+            std::cout << chars[index_dist(rng)];
+        }
+        std::cout << std::endl;
     }
 
     if (userInput == "STORE") {

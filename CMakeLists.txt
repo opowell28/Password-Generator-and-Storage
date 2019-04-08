@@ -3,7 +3,7 @@ project(7__BoostRandom)
 
 message(STATUS "start running cmake...")
 
-find_package(Boost 1.57.0 COMPONENTS system filesystem REQUIRED)
+find_package(Boost REQUIRED system random)
 
 if(Boost_FOUND)
 
@@ -15,10 +15,10 @@ if(Boost_FOUND)
 
 endif()
 
-add_executable(BoostTest main.cpp)
+add_executable(7__BoostRandom main.cpp)
 
 if(Boost_FOUND)
 
-    target_link_libraries(BoostTest ${Boost_LIBRARIES})
+    target_link_libraries(7__BoostRandom Boost::system Boost::random)
 
 endif()
